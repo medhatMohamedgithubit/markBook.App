@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Mark</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container ">
+           
+                <h1 class="text-center mb-5 position-relative mt-5">Bookmarker</h1>
+            
+            <div class="contant ">
+                <h2 class="mt-4 mb-5 text-center">
+                    <i class="fa-solid fa-bookmark"></i>
+                    Bookmark your favorite sites
+                    <i class="fa-solid fa-bookmark"></i>
+                </h2>
+                <div class="mb-3 ">
+                    <label for="bookMarkName" class="form-label"><i class="fa-solid fa-book-bookmark"></i> Site Name</label>
+                    <input type="text" class="form-control" id="bookMarkName" aria-describedby="emailHelp" placeholder="BookMark Name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="websiteUrl" class="form-label"><i class="fa-solid fa-link"></i> Site URL</label>
+                    <input type="url" class="form-control" id="websiteUrl" placeholder="website Url">
+                  </div>
+                  <div class="mb-3">
+                    <label for="search" class="form-label"> <i class="fa-solid fa-magnifying-glass"></i> search</label>
+                    <input  type="text"  oninput="search(this.value)"  class="form-control" id="search" placeholder="search">
+                  </div>
+                  <div class="text-center">
+                    <button onclick="addWebSite()"  class="btn btn-danger mb-4 px-5">Submit</button>
+                  </div>
+                  
+            </div>
+            <table class="mt-4 d w-100 py-3 b">
+                <thead>
+                    <tr class="text-center  border-bottom ">
+                        <th class="p-2 ">Index</th>
+                        <th class="p-2 ">Website Name</th>
+                        <th class="p-2 ">Visit</th>
+                        <th class="p-2 ">Delete</th>
+                    </tr>
+                </thead>
+                <tbody  id="websiteContant">
+                    
+                </tbody>
+               
+            
+            </table>
+        </div>
+    </header>
+
+
+  
+  
+  
+  
+  
+  
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
