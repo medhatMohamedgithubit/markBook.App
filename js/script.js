@@ -1,6 +1,7 @@
 var bookMarkName = document.getElementById("bookMarkName");
 var websiteUrl = document.getElementById("websiteUrl");
 var webSiteList =[];
+id=0;
 if(localStorage.getItem("webSiteLists")!= null) {
     webSiteList = JSON.parse(localStorage.getItem("webSiteLists"));
     display(webSiteList);
@@ -8,25 +9,28 @@ if(localStorage.getItem("webSiteLists")!= null) {
 
 
 function addWebSite(){
-  
-    var webSite ={
+    var webSites= {
         name:bookMarkName.value,
-        webSite:websiteUrl.value,
+        webSite:websiteUrl.value,  
+        id:webSiteList.length
     }
-    webSiteList.push(webSite)
+    webSiteList.push(webSites)
+    
     localStorage.setItem("webSiteLists",JSON.stringify(webSiteList));
-    display()
+    display(webSiteList)
     clear()
    
 }
 
-function display(){
+function display(loop){
     var webSiteData=``;
-    for(var i=0;i<webSiteList.length;i++){
-        webSiteData += `<tr class="text-center  border-bottom">
-        <td class="p-2">${webSiteList.indexOf(webSiteList[i])+1}</td>
-        <td class="p-2">${webSiteList[i].name}</td>
-        <td class="p-2"><a href="${ websiteUrl.value}" target="_blank" tabindex="webSiteList.indexOf"><button onclick="visit(${webSiteList.indexOf})"class="btn btn-success">
+    for(var i=0;i<loop.length;i++){
+        webSiteData += `
+        <input type="hidden" value="${i}">
+        <tr class="text-center  border-bottom">
+        <td class="p-2">${loop.indexOf(loop[i])+1}</td>
+        <td class="p-2">${loop[i].name}</td>
+        <td class="p-2"><a href="${loop[i].webSite}" target="_blank" tabindex="webSiteList.indexOf"><button onclick="visit()"class="btn btn-success">
         
             <i class="fa-solid fa-eye"></i>
             visit</button></a></td>
@@ -43,15 +47,17 @@ function clear(){
     websiteUrl.value=null;
 }
 
-function deleteWebSite(index){
-    webSiteList.splice(index,1)
+function deleteWebSite(id){
+    webSiteList.splice(id,1)
     localStorage.setItem("webSiteLists",JSON.stringify(webSiteList));
-    display()
+    display(webSiteList)
 }
 function visit()
 {
-
-     window.open(url,"_blank");
+    
+     
+        window.open(url);
+       
     
 }
 function search(searchValue){
